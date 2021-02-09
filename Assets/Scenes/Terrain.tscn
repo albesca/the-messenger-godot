@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Images/landscape.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Scripts/Terrain.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 56 )
+
+[node name="Terrain" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="TerrainTexture" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjectCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 80, 104 )
+shape = SubResource( 1 )

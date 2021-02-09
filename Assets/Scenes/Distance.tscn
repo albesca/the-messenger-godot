@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/distance_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Scripts/Distance.gd" type="Script" id=2]
+
+[node name="Distance" type="RichTextLabel"]
+margin_right = 120.0
+margin_bottom = 40.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "0.0 m"
+fit_content_height = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

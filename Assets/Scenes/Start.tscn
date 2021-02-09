@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Scripts/Start.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/title_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Shortcuts/s_shorcut.tres" type="ShortCut" id=4]
+[ext_resource path="res://Assets/Shortcuts/q_shortcut.tres" type="ShortCut" id=5]
+[ext_resource path="res://Assets/Shortcuts/h_shortcut.tres" type="ShortCut" id=6]
+[ext_resource path="res://Assets/Scenes/QuitConfirm.tscn" type="PackedScene" id=7]
+
+[node name="Start" type="Node2D"]
+script = ExtResource( 2 )
+QuitScene = ExtResource( 7 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_left = 140.0
+margin_top = 60.0
+margin_right = 500.0
+margin_bottom = 120.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 3 )
+text = "The Messenger"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 240.0
+margin_top = 200.0
+margin_right = 400.0
+margin_bottom = 230.0
+custom_fonts/font = ExtResource( 1 )
+shortcut = ExtResource( 4 )
+text = "(S)tart game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HowToButton" type="Button" parent="."]
+margin_left = 240.0
+margin_top = 276.26
+margin_right = 400.0
+margin_bottom = 306.26
+custom_fonts/font = ExtResource( 1 )
+shortcut = ExtResource( 6 )
+text = "(H)ow to play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 240.0
+margin_top = 350.0
+margin_right = 400.0
+margin_bottom = 380.0
+custom_fonts/font = ExtResource( 1 )
+shortcut = ExtResource( 5 )
+text = "(Q)uit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartButton" to="." method="start_game"]
+[connection signal="pressed" from="HowToButton" to="." method="how_to"]
+[connection signal="pressed" from="QuitButton" to="." method="quit_attempt"]

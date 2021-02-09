@@ -1,0 +1,37 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Images/sky.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Scenes/Terrain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/Distance.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Fonts/DroidSerif.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Scenes/GameOver.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 24
+font_data = ExtResource( 7 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+ObstacleScene = ExtResource( 5 )
+PlayerScene = ExtResource( 2 )
+TerrainScene = ExtResource( 4 )
+GameOverScene = ExtResource( 8 )
+
+[node name="Sky" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Distance" parent="." instance=ExtResource( 6 )]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 145.0
+margin_bottom = 65.0
+custom_fonts/normal_font = SubResource( 1 )

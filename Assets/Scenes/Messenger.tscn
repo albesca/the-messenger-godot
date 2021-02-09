@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Animations/Messenger.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Assets/Scripts/Messenger.gd" type="Script" id=42]
+
+[node name="Messenger" type="AnimatedSprite"]
+frames = ExtResource( 1 )
+animation = "Catch breath"
+centered = false
+script = ExtResource( 42 )
+[connection signal="animation_finished" from="." to="." method="action_completed"]

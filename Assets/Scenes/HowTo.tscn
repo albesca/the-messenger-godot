@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Scripts/HowTo.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Shortcuts/b_shortcut.tres" type="ShortCut" id=4]
+
+[node name="HowTo" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_left = 170.0
+margin_top = 40.0
+margin_right = 470.0
+margin_bottom = 100.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "How to play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Introduction" type="RichTextLabel" parent="."]
+margin_left = 90.0
+margin_top = 120.0
+margin_right = 550.0
+margin_bottom = 180.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "  Help the amazon  bring her message to destination, avoiding the obstacles on her path."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Commands" type="RichTextLabel" parent="."]
+margin_left = 120.0
+margin_top = 240.0
+margin_right = 520.0
+margin_bottom = 390.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Keyboard: press \"W\" or Up arrow to jump
+
+Mouse: left click to jump
+
+Mobile: tap on the screen to jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 240.0
+margin_top = 400.0
+margin_right = 400.0
+margin_bottom = 430.0
+custom_fonts/font = ExtResource( 1 )
+shortcut = ExtResource( 4 )
+text = "(B)ack to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="back_to_start"]

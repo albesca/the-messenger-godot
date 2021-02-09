@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Shortcuts/q_shortcut.tres" type="ShortCut" id=1]
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Shortcuts/g_shortcut.tres" type="ShortCut" id=3]
+[ext_resource path="res://Assets/Scripts/QuitConfirm.gd" type="Script" id=4]
+
+[node name="QuitConfirm" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BackgroundTexture" type="ColorRect" parent="."]
+margin_right = 192.0
+margin_bottom = 144.0
+color = Color( 0.494118, 0.494118, 0.494118, 1 )
+
+[node name="QuitMessage" type="RichTextLabel" parent="."]
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 186.0
+margin_bottom = 68.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Are you sure you want to quit?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="."]
+margin_left = 42.0
+margin_top = 70.0
+margin_right = 150.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 2 )
+shortcut = ExtResource( 1 )
+text = "(Q)uit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="."]
+margin_left = 42.0
+margin_top = 106.0
+margin_right = 150.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 2 )
+shortcut = ExtResource( 3 )
+text = "(G)o back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Confirm" to="." method="quit"]
+[connection signal="pressed" from="Cancel" to="." method="cancel_quit"]
