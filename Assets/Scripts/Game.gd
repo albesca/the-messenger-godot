@@ -37,6 +37,7 @@ func _ready():
 	init_player()
 	init_terrain(TERRAIN_STARTING_POSITION)
 	init_obstacles(OBSTACLE_STARTING_POSITION)
+	update_health()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -143,6 +144,7 @@ func init_obstacles(starting_position):
 
 func player_hit_obstacle():
 	lives -= 1
+	update_health()
 	if lives == 0:
 		process_game_over()
 	else:
@@ -151,8 +153,9 @@ func player_hit_obstacle():
 
 
 func update_distance(delta):
-	distance += get_speed(true) * delta
-	$Distance.update_label(distance)
+	if !player.game_over:
+		distance += get_speed(true) * delta
+		$Distance.update_label(distance)
 
 
 func get_speed_factor():
@@ -177,5 +180,9 @@ func process_game_over():
 	game_over.text = constants.GAME_OVER_MESSAGE % [distance, \
 			constants.DISPLAY_DISTANCE_UNIT_FULL]
 	add_child(game_over)
-	yield(get_tree().create_timer(5.0), "timeout")
+	yield(get_tree().create_timer(4.0), "timeout")
 	emit_signal("game_over")
+
+
+func update_health():
+	$Health.update_health(lives)
