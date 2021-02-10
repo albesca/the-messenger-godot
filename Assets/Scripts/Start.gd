@@ -9,11 +9,12 @@ signal how_to
 signal quit_game
 export (PackedScene) var QuitScene
 var quit
+var constants
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	constants = get_node("/root/Constants")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,3 +70,8 @@ func enable_menu():
 	$StartButton.disabled = false
 	$HowToButton.disabled = false
 	$QuitButton.disabled = false
+
+
+func update_high_score(high_score):
+	$MaxDistance.text = constants.DISPLAY_HIGH_SCORE % [high_score, \
+			constants.DISPLAY_DISTANCE_UNIT_FULL]

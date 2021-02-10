@@ -59,6 +59,17 @@ text = "(Q)uit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MaxDistance" type="RichTextLabel" parent="."]
+margin_left = 160.0
+margin_top = 420.0
+margin_right = 520.0
+margin_bottom = 450.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Max distance covered: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="StartButton" to="." method="start_game"]
 [connection signal="pressed" from="HowToButton" to="." method="how_to"]
 [connection signal="pressed" from="QuitButton" to="." method="quit_attempt"]

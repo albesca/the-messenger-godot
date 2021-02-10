@@ -36,3 +36,8 @@ const DISPLAY_DISTANCE_FORMAT = "%.1f %s"
 const DISPLAY_DISTANCE_UNIT = "m"
 const DISPLAY_DISTANCE_UNIT_FULL = "meters"
 const GAME_OVER_MESSAGE = "you ran for %.1f %s!"
+const GAME_OVER_MESSAGE_NEW_RECORD = "you ran for %.1f %s,\nyou never got this far!"
+const DISPLAY_HIGH_SCORE = "Max distance covered: %.1f %s"
+
+const DATA_FILE = "user://datasave.res"
+const DATA_HIGH_SCORE = "high score"

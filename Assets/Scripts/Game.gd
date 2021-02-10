@@ -7,7 +7,7 @@ extends Node2D
 const PLAYER_POSITION = Vector2(180, 300)
 const OBSTACLE_STARTING_POSITION = Vector2(0, 254)
 const TERRAIN_STARTING_POSITION = Vector2(0, 254)
-signal game_over
+signal game_over(distance)
 export (PackedScene) var ObstacleScene
 export (PackedScene) var PlayerScene
 export (PackedScene) var TerrainScene
@@ -26,6 +26,8 @@ var distance
 var last_obstacle_hit
 var landscape_fixed
 var game_over
+var high_score
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -177,11 +179,18 @@ func process_game_over():
 	player.accept_input = false
 	player.game_over = true
 	game_over = GameOverScene.instance()
-	game_over.text = constants.GAME_OVER_MESSAGE % [distance, \
+	var game_over_text
+	var rounded_distance = stepify(distance, 0.1)
+	if (rounded_distance > high_score) :
+		game_over_text = constants.GAME_OVER_MESSAGE_NEW_RECORD
+	else:
+		game_over_text = constants.GAME_OVER_MESSAGE
+		
+	game_over.text = game_over_text % [rounded_distance, \
 			constants.DISPLAY_DISTANCE_UNIT_FULL]
 	add_child(game_over)
 	yield(get_tree().create_timer(4.0), "timeout")
-	emit_signal("game_over")
+	emit_signal("game_over", rounded_distance)
 
 
 func update_health():

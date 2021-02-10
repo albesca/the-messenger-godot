@@ -10,10 +10,14 @@ export (PackedScene) var HowToScene
 var start
 var game
 var how_to
+var high_score
+var constants
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	constants = get_node("/root/Constants")
+	init_high_score()
 	init_start()
 
 
@@ -26,6 +30,7 @@ func init_start():
 	start.connect("how_to", self, "how_to_play")
 	start.connect("quit_game", self, "quit")
 	add_child(start)
+	start.update_high_score(high_score)
 
 
 func remove_start():
@@ -36,6 +41,7 @@ func remove_start():
 func init_game():
 	game = GameScene.instance()
 	game.connect("game_over", self, "back_to_start")
+	game.high_score = high_score
 	add_child(game)
 
 
@@ -65,7 +71,10 @@ func start_game():
 	init_game()
 
 
-func back_to_start():
+func back_to_start(distance):
+	if distance > high_score:
+		update_high_score(distance)
+		
 	remove_game()
 	remove_how_to()
 	init_start()
@@ -73,3 +82,23 @@ func back_to_start():
 
 func quit():
 	get_tree().quit()
+
+
+func init_high_score():
+	var data_file = File.new()
+	if data_file.file_exists(constants.DATA_FILE):
+		data_file.open(constants.DATA_FILE, File.READ)
+		var data = parse_json(data_file.get_line())
+		high_score = data[constants.DATA_HIGH_SCORE]
+		data_file.close()
+	else:
+		high_score = 0
+
+
+func update_high_score(distance):
+	high_score = distance
+	var data_file = File.new()
+	data_file.open(constants.DATA_FILE, File.WRITE)
+	var data = {constants.DATA_HIGH_SCORE: high_score}
+	data_file.store_line(to_json(data))
+	data_file.close()
