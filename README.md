@@ -8,14 +8,13 @@ The font used throughout the game is Droid Serif (https://www.1001fonts.com/droi
 Current roadmap:
 
 version 0.0.3
+- add another type of obstacle (tree with low branch) and the matching action (crouching) to avoid it
 
-add another type of obstacle (tree with low branch) and the matching action (crouching) to avoid it
 version 0.0.4
+- add background layer tiles
+- add foreground layer tiles
 
-add background layer tiles
-add foreground layer tiles
 version 0.1.0
-
-add sound fx
-add sound settings in the start menu
-add start menu art
+- add sound fx
+- add sound settings in the start menu
+- add start menu art
