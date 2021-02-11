@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Start.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Game.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/HowTo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Music/the_messenger.ogg" type="AudioStream" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 StartScene = ExtResource( 2 )
 GameScene = ExtResource( 3 )
 HowToScene = ExtResource( 4 )
+
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

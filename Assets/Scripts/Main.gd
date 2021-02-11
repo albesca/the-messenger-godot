@@ -7,6 +7,7 @@ extends Node2D
 export (PackedScene) var StartScene
 export (PackedScene) var GameScene
 export (PackedScene) var HowToScene
+export var background_music = false
 var start
 var game
 var how_to
@@ -31,6 +32,8 @@ func init_start():
 	start.connect("quit_game", self, "quit")
 	add_child(start)
 	start.update_high_score(high_score)
+	if !$Theme.playing and background_music:
+		$Theme.play()
 
 
 func remove_start():
@@ -39,6 +42,9 @@ func remove_start():
 
 
 func init_game():
+	if $Theme.playing:
+		$Theme.stop()
+
 	game = GameScene.instance()
 	game.connect("game_over", self, "back_to_start")
 	game.high_score = high_score
@@ -71,7 +77,7 @@ func start_game():
 	init_game()
 
 
-func back_to_start(distance):
+func back_to_start(distance = 0):
 	if distance > high_score:
 		update_high_score(distance)
 		

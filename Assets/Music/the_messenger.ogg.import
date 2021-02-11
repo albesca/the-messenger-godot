@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/the_messenger.ogg-c2ae5035325499e1c6ad1b736ecae593.oggstr"
+
+[deps]
+
+source_file="res://Assets/Music/the_messenger.ogg"
+dest_files=[ "res://.import/the_messenger.ogg-c2ae5035325499e1c6ad1b736ecae593.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
